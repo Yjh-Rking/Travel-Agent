@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+.Python
+
+# IDE
+.vscode/
+
+# agent-demo
+helloagents-trip-planner/
