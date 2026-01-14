@@ -92,3 +92,9 @@ class TripPlan(BaseModel):
     weather_info: List[WeatherInfo] = Field(default=[], description="天气信息")
     overall_suggestions: str = Field(..., description="总体建议")
     budget: Optional[Budget] = Field(default=None, description="预算信息")
+
+class TripPlanResponse(BaseModel):
+    """旅行计划响应"""
+    success: bool = Field(..., description="是否成功")
+    message: str = Field(default="", description="消息")
+    data: Optional[TripPlan] = Field(default=None, description="旅行计划数据")
