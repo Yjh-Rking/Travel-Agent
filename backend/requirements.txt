@@ -3,3 +3,4 @@ langchain_core==1.2.7
 langchain_mcp_adapters==0.2.1
 langchain_openai==1.1.7
 pydantic==2.12.5
+uv==0.9.25
