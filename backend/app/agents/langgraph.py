@@ -142,7 +142,7 @@ def planner_query(agent) -> callable:
 
     return call_agent
 
-def _parse_response(response: str, request: TripRequest) -> TripPlan:
+def _parse_response(response: str) -> TripPlan:
     """
     解析Agent响应
     
@@ -171,7 +171,8 @@ def _parse_response(response: str, request: TripRequest) -> TripPlan:
             json_str = response[json_start:json_end]
         else:
             raise ValueError("响应中未找到JSON数据")
-        
+        print("📝 提取到的JSON数据:")
+        print(json_str)
         # 解析JSON
         data = json.loads(json_str)
         
@@ -190,7 +191,7 @@ class AgentState(TypedDict):
     planner: Optional[str]
     request: TripRequest
 
-async def main():
+async def agent_plan_trip(trip_request: TripRequest) -> TripPlan:
     mcp_tools = await get_mcp_tools()
 
     attraction_agent = await init_agent("attraction_agent", ATTRACTION_AGENT_PROMPT, mcp_tools)
@@ -214,28 +215,14 @@ async def main():
     graph = builder.compile()
     # print(graph.get_graph().draw_mermaid())
 
-    # 生成一个TripRequest实例
-    trip_request = TripRequest(
-        city="北京",
-        start_date="2026-01-19",
-        end_date="2026-01-22",
-        travel_days=3,
-        transportation="公共交通",
-        accommodation="经济型酒店",
-        preferences=["历史文化", "美食"],
-        free_text_input="希望多安排一些博物馆"
-    )
-
     initial_state: AgentState = {
         "messages": [],
         "request": trip_request
     }
     
     final_state = await graph.ainvoke(initial_state)
-    print(final_state["planner"])
-    trip_plan = _parse_response(final_state["planner"], trip_request)
-    print("tripplan:", trip_plan)
+    trip_plan = _parse_response(final_state["planner"])
+    return trip_plan
 
 if __name__ == "__main__":
-    asyncio.run(main())
-    # asyncio.run(get_mcp_tools())
+    asyncio.run(agent_plan_trip())
