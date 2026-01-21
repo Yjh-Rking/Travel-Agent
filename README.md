@@ -65,3 +65,7 @@ travel-agent/
 - 输入目的地、日期、旅行偏好
 - AI 自动生成每日行程规划
 - 包含景点、餐饮、住宿、天气、预算信息
+
+
+## 前端界面示例
+![Front HomeView](<docs/images/Travel-Agent Homeview.jpeg>)
