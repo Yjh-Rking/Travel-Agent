@@ -272,7 +272,7 @@ const handleReset = () => {
                   <a-card title="景点" size="small" class="sub-card">
                     <div v-for="(attraction, idx) in day.attractions" :key="idx" class="item">
                       <a-typography-text strong>{{ attraction.name }}</a-typography-text>
-                      <a-typography-text type="secondary"> - {{ attraction.visit_duration }}小时</a-typography-text>
+                      <a-typography-text type="secondary"> - {{ attraction.visit_duration }}分钟</a-typography-text>
                       <a-typography-text type="secondary" class="address">{{ attraction.address }}</a-typography-text>
                     </div>
                   </a-card>
