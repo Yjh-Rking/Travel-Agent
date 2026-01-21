@@ -1,6 +1,7 @@
 # Travel-Agent 前端工程
 
 基于 AI 的个性化旅行行程规划前端应用。
+本前端工程完全由AI实现，开发工具使用Claude Code + Minimax
 
 ## 技术栈
 
@@ -13,10 +14,15 @@
 | Axios | 1.6.x | HTTP 客户端 |
 | Vue Router | 4.3.x | 路由管理 |
 
-## 开发工具
+## 启动方式
 
-- **Claude Code**: AI 编程助手（Anthropic）
-- **MiniMax**: AI 代码生成辅助
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+开发服务器运行在 http://localhost:5173
 
 ## 项目结构
 
@@ -93,16 +99,6 @@ frontend/
 - 旅行偏好多选
 - 额外要求文本输入
 - AI 行程生成结果展示（结构化显示每日行程、景点、餐饮、住宿、天气、预算等）
-
-## 启动方式
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-开发服务器运行在 http://localhost:5173
 
 ## 构建部署
 
